@@ -6,6 +6,8 @@
 #include "MessageTypes.h"
 #include "Time/CrudeTimer.h"
 #include "EntityNames.h"
+#include "EntityManager.h"
+#include "Miner.h"
 
 #include <iostream>
 
@@ -36,11 +38,17 @@ void SayNumberOfDrinks::Execute(Drunkard* drunkard)
 {
 	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": So far, " << drunkard->getNbDrinks() << " beers mate! See that? Yiiiiiha!";
 
-	Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
-								drunkard->ID(),
-								ent_Miner_Bob,
-								Msg_Tease,
-								NO_ADDITIONAL_INFO);
+	// TODO relocate random perception inside miner...
+	// Miner has 50% chances to go mad
+
+	if (EntityManager::Instance()->GetEntityFromID(ent_Miner_Bob) != NULL && ((Miner*)EntityManager::Instance()->GetEntityFromID(ent_Miner_Bob))->Location() == saloon)
+	{
+		Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
+			drunkard->ID(),
+			ent_Miner_Bob,
+			Msg_Tease,
+			NO_ADDITIONAL_INFO);
+	}
 
 	drunkard->GetFSM()->ChangeState(Drink::Instance());
 }
@@ -74,7 +82,7 @@ void Drink::Execute(Drunkard* drunkard)
 
 	drunkard->drinkOneMore();
 
-	if (RandFloat() < 0.7)
+	if (RandFloat() < 0.2)
 		return;
 
 	drunkard->GetFSM()->ChangeState(SayNumberOfDrinks::Instance());
@@ -87,40 +95,6 @@ void Drink::Exit(Drunkard* drunkard)
 
 bool Drink::OnMessage(Drunkard* drunkard, const Telegram& msg)
 {
-	switch (msg.Msg)
-	{
-	case Msg_Punch:
-		drunkard->GetFSM()->ChangeState(KnockedOut::Instance());
-		return true;
-	}
-
 	return false;
 }
 
-//-------------------------------------------------------------------------KnockedOut
-
-KnockedOut* KnockedOut::Instance()
-{
-	static KnockedOut instance;
-	return &instance;
-}
-
-void KnockedOut::Enter(Drunkard* drunkard)
-{
-	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": Ooooh I'm faillin...";
-}
-
-void KnockedOut::Execute(Drunkard* drunkard)
-{
-	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": Argh...";
-}
-
-void KnockedOut::Exit(Drunkard* drunkard)
-{
-	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I'm feelin better!";
-}
-
-bool KnockedOut::OnMessage(Drunkard* drunkard, const Telegram& msg)
-{
-	return false;
-}

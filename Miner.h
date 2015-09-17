@@ -28,7 +28,7 @@ const int ComfortLevel       = 5;
 //the amount of nuggets a miner can carry
 const int MaxNuggets         = 3;
 //above this value a miner is thirsty
-const int ThirstLevel        = 5;
+const int ThirstLevel        = 2;
 //above this value a miner is sleepy
 const int TirednessThreshold = 5;
 const int HalfTirednessThreshold = 2;

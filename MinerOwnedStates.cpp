@@ -246,7 +246,14 @@ void QuenchThirst::Execute(Miner* pMiner)
 
 void QuenchThirst::Exit(Miner* pMiner)
 { 
-  cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Leaving the saloon, feelin' good";
+	if (pMiner->Teased())
+	{
+		cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Bring it on, you fucker!";
+	}
+	else
+	{
+		cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Feelin good, leaving the saloon!";
+	}
 }
 
 
@@ -258,17 +265,22 @@ bool QuenchThirst::OnMessage(Miner* pMiner, const Telegram& msg)
 	switch (msg.Msg)
 	{
 	case Msg_Tease:
-		if (!pMiner->HalfFatigued())
+		/*if (!pMiner->HalfFatigued())
 			return false;
-
+		*/
 		pMiner->IncreaseTeasing();
 		if (pMiner->Teased())
 		{
-			pMiner->ResetTeasing();
 			Fight::Instance()->setTarget(EntityManager::Instance()->GetEntityFromID(msg.Sender));
 			pMiner->GetFSM()->ChangeState(Fight::Instance());
+			return true;
 		}
-		return true;
+		else 
+		{
+			cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": Calm down mate";
+			return true;
+		}
+		break;
 	}
 
 	return false;
@@ -327,13 +339,14 @@ void Fight::Execute(Miner* miner)
 	Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
 								miner->ID(),
 								ent_Jack,
-								Msg_Tease,
+								Msg_Punch,
 								NO_ADDITIONAL_INFO);
 }
 
 void Fight::Exit(Miner* miner)
 {
 	cout << "\n" << GetNameOfEntity(miner->ID()) << ": " << "Ya want another one?";
+	miner->ResetTeasing();
 }
 
 bool Fight::OnMessage(Miner* agent, const Telegram& msg)

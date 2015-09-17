@@ -62,23 +62,4 @@ public:
   virtual bool OnMessage(Drunkard* drunkard, const Telegram& msg);
 };
 
-// ----------------
-
-class KnockedOut : public State<Drunkard>
-{
-private:
-  
-  KnockedOut(){}
-  KnockedOut(const KnockedOut&);
-  KnockedOut& operator=(const KnockedOut&);
-
-public:
-
-  static KnockedOut* Instance();
-  virtual void Enter(Drunkard* drunkard);
-  virtual void Execute(Drunkard* drunkard);
-  virtual void Exit(Drunkard* drunkard);
-  virtual bool OnMessage(Drunkard* drunkard, const Telegram& msg);
-};
-
 #endif // DRUNKARD_OWNED_STATES_H

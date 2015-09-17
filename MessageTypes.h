@@ -26,11 +26,11 @@ inline std::string MsgToStr(int msg)
 
   case Msg_Tease:
 
-	  return "Teasing";
+	  return "FuckYou";
 
   case Msg_Punch:
 
-	  return "Punching";
+	  return "Outch";
 
   default:
 
