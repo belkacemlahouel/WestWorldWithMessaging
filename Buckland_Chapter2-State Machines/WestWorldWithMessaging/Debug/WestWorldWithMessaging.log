@@ -1,0 +1,32 @@
+﻿La génération a démarré 17/09/2015 16:51:50.
+     1>Projet "C:\Users\belkacem\Desktop\ia_projet1\WestWorldWithMessaging.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt BaseGameEntity.cpp Drunkard.cpp DrunkardOwnedStates.cpp EntityManager.cpp main.cpp MessageDispatcher.cpp Miner.cpp MinerOwnedStates.cpp MinersWife.cpp MinersWifeOwnedStates.cpp ..\..\Common\Time\CrudeTimer.cpp
+         CrudeTimer.cpp
+     1>c1xx : fatal error C1083: Impossible d'ouvrir le fichier source : '..\..\Common\Time\CrudeTimer.cpp' : No such file or directory
+         MinersWifeOwnedStates.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\minerswifeownedstates.h(12): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
+         MinersWife.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\minerswife.h(15): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
+         MinerOwnedStates.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\minerownedstates.h(13): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
+         Miner.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
+         MessageDispatcher.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\messagedispatcher.h(18): fatal error C1083: Impossible d'ouvrir le fichier include : 'misc/ConsoleUtils.h' : No such file or directory
+         main.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
+         EntityManager.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
+         DrunkardOwnedStates.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\drunkardownedstates.h(4): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
+         Drunkard.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
+         BaseGameEntity.cpp
+     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
+         Génération de code en cours...
+     1>Génération du projet "C:\Users\belkacem\Desktop\ia_projet1\WestWorldWithMessaging.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
+
+ÉCHEC de la build.
+
+Temps écoulé 00:00:02.88
