@@ -62,6 +62,41 @@ bool SayNumberOfDrinks::OnMessage(Drunkard* drunkard, const Telegram& msg)
   return false;
 }
 
+//-------------------------------------------------------------------------WarmingUp
+
+WarmingUp* WarmingUp::Instance()
+{
+	static WarmingUp instance;
+	return &instance;
+}
+
+void WarmingUp::Enter(Drunkard* drunkard)
+{
+	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I'm happy today! What about a beer?";
+}
+
+void WarmingUp::Execute(Drunkard* drunkard)
+{
+	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I'm cool, chilling alone with my beer :-)";
+	drunkard->drinkOneMore();
+	if (drunkard->isWarmedUp())
+	{
+		drunkard->GetFSM()->ChangeState(Drink::Instance());
+	}
+}
+
+void WarmingUp::Exit(Drunkard* drunkard)
+{
+	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I'm all warmed up now!";
+}
+
+bool WarmingUp::OnMessage(Drunkard* drunkard, const Telegram& msg)
+{
+	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": Hello :-) !";
+	return true;
+}
+
+
 //-------------------------------------------------------------------------Drink
 
 Drink* Drink::Instance()

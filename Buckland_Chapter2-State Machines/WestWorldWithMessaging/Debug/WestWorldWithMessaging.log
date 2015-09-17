@@ -1,32 +1,27 @@
-﻿La génération a démarré 17/09/2015 16:51:50.
-     1>Projet "C:\Users\belkacem\Desktop\ia_projet1\WestWorldWithMessaging.vcxproj" sur le nœud 2 (Build cible(s)).
+﻿La génération a démarré 17/09/2015 17:27:05.
+     1>Projet "C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\WestWorldWithMessaging.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt BaseGameEntity.cpp Drunkard.cpp DrunkardOwnedStates.cpp EntityManager.cpp main.cpp MessageDispatcher.cpp Miner.cpp MinerOwnedStates.cpp MinersWife.cpp MinersWifeOwnedStates.cpp ..\..\Common\Time\CrudeTimer.cpp
-         CrudeTimer.cpp
-     1>c1xx : fatal error C1083: Impossible d'ouvrir le fichier source : '..\..\Common\Time\CrudeTimer.cpp' : No such file or directory
-         MinersWifeOwnedStates.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\minerswifeownedstates.h(12): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
-         MinersWife.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\minerswife.h(15): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
-         MinerOwnedStates.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\minerownedstates.h(13): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
-         Miner.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
-         MessageDispatcher.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\messagedispatcher.h(18): fatal error C1083: Impossible d'ouvrir le fichier include : 'misc/ConsoleUtils.h' : No such file or directory
-         main.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
-         EntityManager.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt DrunkardOwnedStates.cpp
          DrunkardOwnedStates.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\drunkardownedstates.h(4): fatal error C1083: Impossible d'ouvrir le fichier include : 'fsm/State.h' : No such file or directory
-         Drunkard.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
-         BaseGameEntity.cpp
-     1>c:\users\belkacem\desktop\ia_projet1\basegameentity.h(14): fatal error C1083: Impossible d'ouvrir le fichier include : 'messaging/Telegram.h' : No such file or directory
-         Génération de code en cours...
-     1>Génération du projet "C:\Users\belkacem\Desktop\ia_projet1\WestWorldWithMessaging.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/WestWorldWithMessaging.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug/WestWorldWithMessaging.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\WestWorldWithMessaging.lib" /MACHINE:X86 /SAFESEH .\Debug/BaseGameEntity.obj
+         .\Debug/Drunkard.obj
+         .\Debug/DrunkardOwnedStates.obj
+         .\Debug/EntityManager.obj
+         .\Debug/main.obj
+         .\Debug/MessageDispatcher.obj
+         .\Debug/Miner.obj
+         .\Debug/MinerOwnedStates.obj
+         .\Debug/MinersWife.obj
+         .\Debug/MinersWifeOwnedStates.obj
+         .\Debug/CrudeTimer.obj
+         LINK : .\Debug/WestWorldWithMessaging.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+     1>BaseGameEntity.obj : warning LNK4075: ' /EDITANDCONTINUE' ignoré à cause de la spécification '/SAFESEH'
+         WestWorldWithMessaging.vcxproj -> C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\.\Debug\WestWorldWithMessaging.exe
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\bscmake.exe /nologo /o".\Debug/WestWorldWithMessaging.bsc" .\Debug\BaseGameEntity.sbr .\Debug\Drunkard.sbr .\Debug\DrunkardOwnedStates.sbr .\Debug\EntityManager.sbr .\Debug\main.sbr .\Debug\MessageDispatcher.sbr .\Debug\Miner.sbr .\Debug\MinerOwnedStates.sbr .\Debug\MinersWife.sbr .\Debug\MinersWifeOwnedStates.sbr .\Debug\CrudeTimer.sbr
+     1>Génération du projet "C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\WestWorldWithMessaging.vcxproj" terminée (Build cible(s)).
 
-ÉCHEC de la build.
+La génération a réussi.
 
-Temps écoulé 00:00:02.88
+Temps écoulé 00:00:05.47

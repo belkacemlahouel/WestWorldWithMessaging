@@ -25,6 +25,8 @@ class BaseGameEntity;
 
 static const float ProbabilityOfSpeaking = 0.7f;
 
+static const int WarmingUpThreshold = 2;
+
 class Drunkard : public BaseGameEntity
 {
 private:
@@ -38,7 +40,7 @@ public:
 	Drunkard(int id):m_location(saloon), m_nbDrinks(0), BaseGameEntity(id)
 	{
 		m_pStateMachine = new StateMachine<Drunkard>(this);
-		m_pStateMachine->SetCurrentState(Drink::Instance());
+		m_pStateMachine->SetCurrentState(WarmingUp::Instance());
 	}
 
 	~Drunkard(){delete m_pStateMachine;}
@@ -51,6 +53,7 @@ public:
 	int getNbDrinks(){return m_nbDrinks;}
 	location_type getLocation(){return m_location;}
 	void setLocation(location_type loc){m_location = loc;}
+	bool isWarmedUp(){return m_nbDrinks > WarmingUpThreshold;}
 
 };
 

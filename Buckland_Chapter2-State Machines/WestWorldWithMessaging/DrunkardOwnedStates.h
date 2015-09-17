@@ -45,6 +45,25 @@ public:
 
 // ----------------
 
+class WarmingUp : public State<Drunkard>
+{
+private:
+  
+  WarmingUp(){}
+  WarmingUp(const WarmingUp&);
+  WarmingUp& operator=(const WarmingUp&);
+
+public:
+
+  static WarmingUp* Instance();
+  virtual void Enter(Drunkard* drunkard);
+  virtual void Execute(Drunkard* drunkard);
+  virtual void Exit(Drunkard* drunkard);
+  virtual bool OnMessage(Drunkard* drunkard, const Telegram& msg);
+};
+
+// ----------------
+
 class Drink : public State<Drunkard>
 {
 private:
