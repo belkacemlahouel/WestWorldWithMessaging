@@ -47,3 +47,8 @@ bool Miner::Fatigued()const
 
   return false;
 }
+
+bool Miner::HalfFatigued()const
+{
+	return (m_iFatigue > HalfTirednessThreshold) ? true : false;
+}

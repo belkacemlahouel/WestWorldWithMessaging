@@ -173,6 +173,31 @@ public:
 };
 
 
+//-------------------------------------------------------------------Fight
+
+class BaseGameEntity;
+
+class Fight : public State<Miner>
+{
+private:
+	BaseGameEntity* m_pTarget;
+
+	Fight(BaseGameEntity* target){m_pTarget = target;}
+	Fight(const Fight&);
+	Fight& operator=(const Fight&);
+ 
+public:
+
+	static Fight* Instance();
+	virtual void Enter(Miner* miner);
+	virtual void Execute(Miner* miner);
+	virtual void Exit(Miner* miner);
+	virtual bool OnMessage(Miner* agent, const Telegram& msg);
+
+	void setTarget(BaseGameEntity* pTarget){m_pTarget = pTarget;}
+};
+
+
 
 
 #endif

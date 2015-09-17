@@ -31,6 +31,9 @@ const int MaxNuggets         = 3;
 const int ThirstLevel        = 5;
 //above this value a miner is sleepy
 const int TirednessThreshold = 5;
+const int HalfTirednessThreshold = 2;
+//max teasing
+const int MaxTeasing = 2;
 
 
 
@@ -54,6 +57,8 @@ private:
   //the higher the value, the more tired the miner
   int                   m_iFatigue;
 
+  int					m_iTeasing;
+
 public:
 
   Miner(int id):m_Location(shack),
@@ -61,8 +66,8 @@ public:
                           m_iMoneyInBank(0),
                           m_iThirst(0),
                           m_iFatigue(0),
+						  m_iTeasing(0),
                           BaseGameEntity(id)
-                               
   {
     //set up state machine
     m_pStateMachine = new StateMachine<Miner>(this);
@@ -95,8 +100,12 @@ public:
   bool          PocketsFull()const{return m_iGoldCarried >= MaxNuggets;}
 
   bool          Fatigued()const;
+  bool			HalfFatigued()const;
   void          DecreaseFatigue(){m_iFatigue -= 1;}
   void          IncreaseFatigue(){m_iFatigue += 1;}
+  void			IncreaseTeasing(){++m_iTeasing;}
+  void			ResetTeasing(){m_iTeasing = 0;}
+  bool			Teased()const{return (m_iTeasing > MaxTeasing) ? true : false;}
 
   int           Wealth()const{return m_iMoneyInBank;}
   void          SetWealth(int val){m_iMoneyInBank = val;}

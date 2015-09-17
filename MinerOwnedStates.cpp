@@ -7,6 +7,7 @@
 #include "MessageTypes.h"
 #include "Time/CrudeTimer.h"
 #include "EntityNames.h"
+#include "EntityManager.h"
 
 #include <iostream>
 using std::cout;
@@ -251,8 +252,26 @@ void QuenchThirst::Exit(Miner* pMiner)
 
 bool QuenchThirst::OnMessage(Miner* pMiner, const Telegram& msg)
 {
-  //send msg to global message handler
-  return false;
+  /*//send msg to global message handler
+  return false;*/
+
+	switch (msg.Msg)
+	{
+	case Msg_Tease:
+		if (!pMiner->HalfFatigued())
+			return false;
+
+		pMiner->IncreaseTeasing();
+		if (pMiner->Teased())
+		{
+			pMiner->ResetTeasing();
+			Fight::Instance()->setTarget(EntityManager::Instance()->GetEntityFromID(msg.Sender));
+			pMiner->GetFSM()->ChangeState(Fight::Instance());
+		}
+		return true;
+	}
+
+	return false;
 }
 
 //------------------------------------------------------------------------EatStew
@@ -289,4 +308,36 @@ bool EatStew::OnMessage(Miner* pMiner, const Telegram& msg)
   return false;
 }
 
+//------------------------------------------------------------------------Fight
+
+Fight* Fight::Instance()
+{
+	static Fight instance(NULL);
+	return &instance;
+}
+
+void Fight::Enter(Miner* miner)
+{
+	cout << "\n" << GetNameOfEntity(miner->ID()) << ": " << "Am gonna hit ya mate!";
+}
+
+void Fight::Execute(Miner* miner)
+{
+	cout << "\n" << GetNameOfEntity(miner->ID()) << ": " << "BOOM!";
+	Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
+								miner->ID(),
+								ent_Jack,
+								Msg_Tease,
+								NO_ADDITIONAL_INFO);
+}
+
+void Fight::Exit(Miner* miner)
+{
+	cout << "\n" << GetNameOfEntity(miner->ID()) << ": " << "Ya want another one?";
+}
+
+bool Fight::OnMessage(Miner* agent, const Telegram& msg)
+{
+	return false;
+}
 
