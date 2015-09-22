@@ -1,8 +1,8 @@
-﻿La génération a démarré 17/09/2015 17:27:05.
+﻿La génération a démarré 22/09/2015 16:43:55.
      1>Projet "C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\WestWorldWithMessaging.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt DrunkardOwnedStates.cpp
-         DrunkardOwnedStates.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/WestWorldWithMessaging.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug/WestWorldWithMessaging.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\WestWorldWithMessaging.lib" /MACHINE:X86 /SAFESEH .\Debug/BaseGameEntity.obj
          .\Debug/Drunkard.obj
@@ -15,13 +15,11 @@
          .\Debug/MinersWife.obj
          .\Debug/MinersWifeOwnedStates.obj
          .\Debug/CrudeTimer.obj
-         LINK : .\Debug/WestWorldWithMessaging.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-     1>BaseGameEntity.obj : warning LNK4075: ' /EDITANDCONTINUE' ignoré à cause de la spécification '/SAFESEH'
-         WestWorldWithMessaging.vcxproj -> C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\.\Debug\WestWorldWithMessaging.exe
-       BscMake:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\bscmake.exe /nologo /o".\Debug/WestWorldWithMessaging.bsc" .\Debug\BaseGameEntity.sbr .\Debug\Drunkard.sbr .\Debug\DrunkardOwnedStates.sbr .\Debug\EntityManager.sbr .\Debug\main.sbr .\Debug\MessageDispatcher.sbr .\Debug\Miner.sbr .\Debug\MinerOwnedStates.sbr .\Debug\MinersWife.sbr .\Debug\MinersWifeOwnedStates.sbr .\Debug\CrudeTimer.sbr
-     1>Génération du projet "C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\WestWorldWithMessaging.vcxproj" terminée (Build cible(s)).
+     1>BaseGameEntity.obj : warning LNK4075: ' /EDITANDCONTINUE' ignorÚ Ó cause de la spÚcification '/SAFESEH'
+     1>LIBCMTD.lib(crt0.obj) : error LNK2019: symbole externe non rÚsolu _main rÚfÚrencÚ dans la fonction ___tmainCRTStartup
+     1>.\Debug/WestWorldWithMessaging.exe : fatal error LNK1120: 1 externes non rÚsolus
+     1>Génération du projet "C:\Users\belkacem\Desktop\ia_projet1\Buckland_Chapter2-State Machines\WestWorldWithMessaging\WestWorldWithMessaging.vcxproj" terminée (Build cible(s)) -- ÉCHEC.
 
-La génération a réussi.
+ÉCHEC de la build.
 
-Temps écoulé 00:00:05.47
+Temps écoulé 00:00:01.64
