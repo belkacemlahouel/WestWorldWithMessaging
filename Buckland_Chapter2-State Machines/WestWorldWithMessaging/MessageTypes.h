@@ -9,6 +9,7 @@ enum message_type
   Msg_StewReady,
   Msg_Tease,
   Msg_Punch,
+  Msg_Warning,
 };
 
 
@@ -31,6 +32,10 @@ inline std::string MsgToStr(int msg)
   case Msg_Punch:
 
 	  return "Punching";
+
+  case Msg_Warning:
+
+	  return "WarningFight";
 
   default:
 

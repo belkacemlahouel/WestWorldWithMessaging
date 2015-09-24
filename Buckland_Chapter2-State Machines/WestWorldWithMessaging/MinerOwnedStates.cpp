@@ -267,6 +267,12 @@ bool QuenchThirst::OnMessage(Miner* pMiner, const Telegram& msg)
 		if (pMiner->Teased())
 		{
 			Fight::Instance()->setTarget(EntityManager::Instance()->GetEntityFromID(msg.Sender));
+			Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
+										pMiner->ID(),
+										ent_Jack,
+										Msg_Warning,  
+										NO_ADDITIONAL_INFO);  
+
 			pMiner->GetFSM()->ChangeState(Fight::Instance());
 			return true;
 		}
@@ -325,7 +331,7 @@ Fight* Fight::Instance()
 
 void Fight::Enter(Miner* miner)
 {
-	cout << "\n" << GetNameOfEntity(miner->ID()) << ": " << "Am gonna hit ya mate!";
+	cout << "\n" << GetNameOfEntity(miner->ID()) << ": " << "Here I come!";
 }
 
 void Fight::Execute(Miner* miner)
@@ -334,7 +340,7 @@ void Fight::Execute(Miner* miner)
 	Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
 								miner->ID(),
 								ent_Jack,
-								Msg_Tease,
+								Msg_Punch,
 								NO_ADDITIONAL_INFO);
 }
 
@@ -346,6 +352,12 @@ void Fight::Exit(Miner* miner)
 
 bool Fight::OnMessage(Miner* agent, const Telegram& msg)
 {
+	if (msg.Msg == Msg_Punch)
+	{
+		cout << "\n" << GetNameOfEntity(agent->ID()) << ": " << "Give me a break!";
+		return true;
+	}
+
 	return false;
 }
 

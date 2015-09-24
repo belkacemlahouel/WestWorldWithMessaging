@@ -100,4 +100,21 @@ public:
   virtual bool OnMessage(Drunkard* drunkard, const Telegram& msg);
 };
 
+// ----------------
+
+class Brawl : public State<Drunkard>
+{
+private:
+	Brawl(){}
+	Brawl(const Brawl&);
+	Brawl& operator=(const Brawl&);
+
+public:
+	static Brawl* Instance();
+	virtual void Enter(Drunkard* drunkard);
+	virtual void Execute(Drunkard* drunkard);
+	virtual void Exit(Drunkard* drunkard);
+	virtual bool OnMessage(Drunkard* drunkard, const Telegram& msg);
+};
+
 #endif // DRUNKARD_OWNED_STATES_H
