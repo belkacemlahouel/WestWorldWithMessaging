@@ -49,21 +49,33 @@ void SayNumberOfDrinks::Execute(Drunkard* drunkard)
 									NO_ADDITIONAL_INFO);
 	}
 
-	drunkard->GetFSM()->ChangeState(Drink::Instance());
+	// drunkard->GetFSM()->ChangeState(Drink::Instance());
+	if (((Miner*)EntityManager::Instance()->GetEntityFromID(ent_Miner_Bob))->Teased())
+	{
+		cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": Give me a real fight!";
+		drunkard->GetFSM()->ChangeState(Brawl::Instance());
+	}
+	else
+	{
+		drunkard->GetFSM()->ChangeState(Drink::Instance());
+	}
 }
 
 void SayNumberOfDrinks::Exit(Drunkard* drunkard)
 {
-	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I should stop now... Or not!";
+	if (!((Miner*)EntityManager::Instance()->GetEntityFromID(ent_Miner_Bob))->Teased())
+	{
+		cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I should stop now... Or not!";
+	}
 }
 
 bool SayNumberOfDrinks::OnMessage(Drunkard* drunkard, const Telegram& msg)
 {
-	if (msg.Msg == Msg_Warning)
+	/*if (msg.Msg == Msg_Warning)
 	{
 		drunkard->GetFSM()->ChangeState(Brawl::Instance());
 		return true;
-	}
+	}*/
 
 	return false;
 }
@@ -189,23 +201,23 @@ void Brawl::Enter(Drunkard* drunkard)
 void Brawl::Execute(Drunkard* drunkard)
 {
 	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": BOOM IN YOUR FACE!";
-	/*Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
+	Dispatch->DispatchMessage(SEND_MSG_IMMEDIATELY,
 		drunkard->ID(),
 		ent_Miner_Bob,
 		Msg_Punch,
-		NO_ADDITIONAL_INFO);*/
+		NO_ADDITIONAL_INFO);
 }
 
 void Brawl::Exit(Drunkard* drunkard)
 {
-	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": Ouch!";
+	cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I'm out!";
 }
 
 bool Brawl::OnMessage(Drunkard* drunkard, const Telegram& msg)
 {
 	if (msg.Msg == Msg_Punch)
 	{
-		cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": I'm out!";
+		cout << "\n" << GetNameOfEntity(drunkard->ID()) << ": Ouch";
 		drunkard->GetFSM()->ChangeState(Drink::Instance());
 		return true;
 	}

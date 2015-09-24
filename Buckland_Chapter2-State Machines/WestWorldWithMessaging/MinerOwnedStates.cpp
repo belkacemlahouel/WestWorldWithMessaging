@@ -247,7 +247,7 @@ void QuenchThirst::Exit(Miner* pMiner)
 { 
 	if (pMiner->Teased())
 	{
-		cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Bring it on, you fucker!";
+		// cout << "\n" << GetNameOfEntity(pMiner->ID()) << ": " << "Bring it on, you fucker!";
 	}
 	else
 	{
